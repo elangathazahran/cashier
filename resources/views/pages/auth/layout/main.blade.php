@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cashier | Login</title>
+    <title>Cashier | {{ $title }}</title>
 
     {{-- web icon --}}
     <link rel="web icon" type="png" href="{{ asset('images/logo_web.png') }}">
@@ -29,16 +29,46 @@
     <div class="auth__card">
         @yield('auth__content')
     </div>
-    
+
     <div class="page-transition">
         <div class="loader-container">
             <div class="loading-text">LOADING</div>
             <div class="loader"></div>
         </div>
     </div>
-       
-    
-      
+
+
+    {{-- sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+        <script>
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                icon: "success",
+                title: "{{ session('success') }}"
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest"></script>
+        <script>
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                icon: "error",
+                title: "{{ session('error') }}"
+            });
+        </script>
+    @endif
 
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/d71dac1f06.js" crossorigin="anonymous"></script>

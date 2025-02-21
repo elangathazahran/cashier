@@ -77,6 +77,38 @@ form.form__auth {
     color: var(--clr-primary);
 }
 
+.bar__password {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label[for="status__bar"] {
+    color: #fff;
+}
+
+.description__status {
+    color: #ddd;
+}
+
+.bar__password-value {
+    width: 100%;
+    background-color: rgb(122, 122, 122);
+    height: 20px;
+    border-radius: 100px;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.bar__password-value .value {
+    width: 0%;
+    height: 100%;
+    background-color: red;
+    transition: 0.3s ease-in-out;
+}
+
+
 .form__label {
     color: #fff;
 }
@@ -206,7 +238,28 @@ form.form__auth {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    transition: background-color 0.3s ease;
 }
+
+.btn.reg {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: rgb(133, 133, 138);
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn.reg.enabled {
+    background-color: rgb(97, 95, 255);
+    cursor: pointer;
+}
+
 
 .auth__card p {
     display: block;

@@ -5,12 +5,12 @@
         <img src="{{ asset('images/logo_web.png') }}" alt="Logo web">
         <h2>Sign in to your account</h2>
     </div>
-    <form action="" class="form__auth">
-
+    <form action="{{ route('login') }}" class="form__auth" method="POST">
+        @csrf
         {{-- email --}}
         <div class="form__input">
-            <label for="email" class="form__label">Email address</label>
-            <input type="email" class="form__control" required>
+            <label for="login" class="form__label">Email or username</label>
+            <input type="text" class="form__control" required name="login" value="{{ old('login') }}">
         </div>
 
         {{-- password --}}
@@ -19,7 +19,7 @@
                 <label for="password" class="form__label">Password</label>
                 <a href="/" class="forgot__password">Forgor password?</a>
             </div>
-            <input type="password" class="form__control password" required>
+            <input type="password" class="form__control password" required name="password">
         </div>
 
         {{-- see password --}}

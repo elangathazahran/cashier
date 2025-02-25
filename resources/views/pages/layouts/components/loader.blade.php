@@ -46,7 +46,6 @@
         const transitionOverlay = document.querySelector(".page-transition");
         const loaderContainer = document.querySelector(".loader-container");
 
-        // Tampilkan loader sebelum halaman berpindah
         window.addEventListener("beforeunload", function() {
             transitionOverlay.style.opacity = "1";
             transitionOverlay.style.width = "10px";

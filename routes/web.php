@@ -16,7 +16,23 @@ Route::get('/register', [AuthController::class, 'showFormRegister'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 
 // dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-Route::get('/products', [ProductsController::class, 'index'])->middleware('auth')->name('dashboard.products');
-Route::get('/purchases', [PurchasesController::class, 'index'])->middleware('auth')->name('dashboard.purchases');
-Route::get('/users', [UsersController::class, 'index'])->middleware('auth')->name('dashboard.users');
+Route::middleware('auth')->group(function () {
+    // dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // products
+    Route::get('/products', [ProductsController::class, 'index'])->name('dashboard.products');
+    Route::get('/products/create', [ProductsController::class, 'create'])->name('dashboard.products.create');
+    Route::post('/products/create', [ProductsController::class, 'store'])->name('dashboard.products.store');
+    Route::get('/products/{id}/edit', [ProductsController::class, 'edit'])->name('dashboard.products.edit');
+    Route::put('/products/{id}', [ProductsController::class, 'update'])->name('dashboard.products.update');
+    Route::get('/products/{product}', [ProductsController::class, 'show'])->name('dashboard.products.show');
+    Route::delete('/products/{id}', [ProductsController::class, 'destroy'])->name('dashboard.products.destroy');
+
+
+    // purchases
+    Route::get('/purchases', [PurchasesController::class, 'index'])->name('dashboard.purchases');
+
+    // users
+    Route::get('/users', [UsersController::class, 'index'])->name('dashboard.users');
+});
